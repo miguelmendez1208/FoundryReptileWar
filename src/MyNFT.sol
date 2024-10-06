@@ -41,7 +41,7 @@ mapping(uint256 => NFTMetadata) private _tokenMetadata;
 }
 
 function getNFTMetadata(uint256 tokenId) public view returns (NFTMetadata memory) {
-    require(_exists(tokenId), "Token does not exist");
+    require(_nextTokenId > tokenId);
     return _tokenMetadata[tokenId];
 }
 
