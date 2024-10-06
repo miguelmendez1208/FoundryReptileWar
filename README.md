@@ -75,3 +75,5 @@ forge create \
   --private-key $your_private_key \
   src/MyNFT.sol:MyNFT \
   --constructor-args $your_address
+
+forge create --rpc-url $your_rpc_url --private-key $your_private_key src/MyNFT.sol:MyNFT --constructor-args $your_address
