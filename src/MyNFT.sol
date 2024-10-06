@@ -40,6 +40,15 @@ mapping(uint256 => NFTMetadata) private _tokenMetadata;
     });
 }
 
+    /**
+     * @dev Internal function to check if a token exists.
+     * @param tokenId The ID of the token to check.
+     * @return True if the token exists, false otherwise.
+     */
+    function _exists(uint256 tokenId) internal view returns (bool) {
+        return _ownerOf(tokenId) != address(0);
+    }
+    
 function getNFTMetadata(uint256 tokenId) public view returns (NFTMetadata memory) {
     require(_nextTokenId > tokenId);
     return _tokenMetadata[tokenId];

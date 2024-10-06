@@ -70,14 +70,8 @@ $ cast --help
 It's fine that we're publishing urls and account keys in .env.example because those are test accounts with no actual real money.
 
 ### Command
-forge create --rpc-url $your_rpc_url --private-key $your_private_key src/Counter.sol:Counter
-
-cast send \
+forge create \
   --rpc-url $your_rpc_url \
   --private-key $your_private_key \
-  <FactoryContractAddress> \
-  "createNFTContract()"
-
-nft factory address: 0x1291Be112d480055DaFd8a610b7d1e203891C274
-
-forge create --rpc-url $your_rpc_url --private-key $your_private_key src/MyNFT.sol:MyNFT --constructor-args $your_address
+  src/MyNFT.sol:MyNFT \
+  --constructor-args $your_address
