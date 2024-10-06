@@ -77,3 +77,12 @@ forge create \
   --constructor-args $your_address
 
 forge create --rpc-url $your_rpc_url --private-key $your_private_key src/MyNFT.sol:MyNFT --constructor-args $your_address
+forge create --rpc-url 127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 src/MyNFT.sol:MyNFT --constructor-args 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+your_rpc_url=127.0.0.1:8545
+your_private_key=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+your_address=0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+deployed to: 
+0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+cast send <CONTRACT_ADDRESS> "safeMint(address,string,string)" <TO_ADDRESS> <FIRST_NAME> <SECOND_NAME> --private-key <PRIVATE_KEY> --rpc-url http://127.0.0.1:8545
+
+cast send 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 "safeMint(address,string,string)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 "Alice" "Billy" --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --rpc-url http://127.0.0.1:8545
