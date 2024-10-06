@@ -7,6 +7,14 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract MyNFT is ERC721, Ownable {
     uint256 private _nextTokenId;
 
+struct NFTMetadata {
+    string firstName;
+    string secondName;
+    uint256 timestamp;
+}
+
+mapping(uint256 => NFTMetadata) private _tokenMetadata;
+
     constructor(address initialOwner) ERC721("ReptileTrophy", "RTK")
  Ownable(initialOwner) {
         // The Ownable constructor automatically sets the owner to msg.sender
@@ -17,4 +25,24 @@ contract MyNFT is ERC721, Ownable {
         uint256 tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
     }
+
+    function safeMint(
+    address to, 
+    string memory firstName, 
+    string memory secondName
+) public onlyOwner {
+    uint256 tokenId = _nextTokenId++;
+    _safeMint(to, tokenId);
+    _tokenMetadata[tokenId] = NFTMetadata({
+        firstName: firstName,
+        secondName: secondName,
+        timestamp: block.timestamp
+    });
+}
+
+function getNFTMetadata(uint256 tokenId) public view returns (NFTMetadata memory) {
+    require(_exists(tokenId), "Token does not exist");
+    return _tokenMetadata[tokenId];
+}
+
 }
